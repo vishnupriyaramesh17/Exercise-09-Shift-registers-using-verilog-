@@ -41,39 +41,73 @@ FIGURE-04
 A Parallel in Parallel out (PIPO) shift register is used as a temporary storage device and like SISO Shift register it acts as a delay element.
 
 ### Procedure
-/* write all the steps invloved */
+1.Use quartus software and import required modules.
 
+2.Assign inputs and outputs for shift registers.
 
+3.Assign logic for input to give output at positive edge.
+
+4.Perform opertaions and produce rtl circuit.
+
+5.end module
 
 ### PROGRAM 
-/*
-Program for  Implementation-of Shift-registers-using-verilog-
-Developed by: 
-RegisterNumber:  
-*/
 
+         Program for  Implementation-of Shift-registers-using-verilog-
+         Developed by: Vishnupriya R
+         RegisterNumber:  212222110054
 
+#### PROGRAM 1
+         module SIPO(c,si,po);
+         input c,si;
+         output[7:0]po;
+         reg [0:7]temp;
+         always@(posedge c)
+         begin
+         temp={temp[0:6],si};
+         end
+         assign po=temp;
+         endmodule
 
+#### PROGRAM 2
+        module PISO (c,pi,so,load);
+        input [3:0]pi;
+        input load,c;
+        output reg so;
+        reg [3:0]tmp;
+        always @(posedge c)
+        begin
+        if(load)
+        tmp<=pi;
+        else
+        begin 
+        so<=tmp[3];
+        tmp<={tmp[2:0],1'b0};
+        end 
+        end 
+        endmodule 
 
+#### PROGRAM 3
+       module sipo(pi,po,clk);
+       input clk;
+       input [3:0] pi;
+       output reg [3:0] po;
+       always @ (posedge clk)
+       begin 
+       po=pi;
+       end
+       endmodule 
 
 
 ### RTL LOGIC  REGISTERS   
-
-
-
-
-
-
-
+![Screenshot (245)](https://github.com/vishnupriyaramesh17/Exercise-09-Shift-registers-using-verilog-/assets/119393589/1efbd71f-292f-4295-be2a-9de9f0f9438e)
+![Screenshot (246)](https://github.com/vishnupriyaramesh17/Exercise-09-Shift-registers-using-verilog-/assets/119393589/a0ab183b-427c-424d-bb1f-92503c65305e)
+![Screenshot (247)](https://github.com/vishnupriyaramesh17/Exercise-09-Shift-registers-using-verilog-/assets/119393589/b04e0fe6-e5c5-4bdf-94cd-fb8b6f584a1a)
 
 
 ### TIMING DIGRAMS FOR SHIFT REGISTERS
-
-
-
-
-
-
+![Screenshot (248)](https://github.com/vishnupriyaramesh17/Exercise-09-Shift-registers-using-verilog-/assets/119393589/af33cadd-777e-4673-a14d-364c99e18daa)
 
 
 ### RESULTS 
+Thus the program to implement shift registers is done successfully.
